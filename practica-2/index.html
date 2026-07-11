@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Mis Tareas</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <header class="navbar">
+      <div class="brand">
+        <i class="fa-solid fa-list-check"></i>
+        <span>Mis Tareas</span>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#">
+          <i class="fa-solid fa-house"></i>
+          Inicio
+        </a>
+
+        <a href="#">
+          <i class="fa-solid fa-chart-simple"></i>
+          Resumen
+        </a>
+
+        <a href="#">
+          <i class="fa-solid fa-list"></i>
+          Tareas
+        </a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="box">
+        <div class="section-header">
+          <i class="fa-solid fa-square-plus"></i>
+
+          <h2>Nueva tarea</h2>
+        </div>
+
+        <form id="formulario-tareas">
+          <div class="field">
+            <label>
+              <i class="fa-solid fa-pen"></i>
+              Nombre
+            </label>
+
+            <input id="nombre" type="text" placeholder="Nombre de la tarea" />
+          </div>
+
+          <div class="field">
+            <label>
+              <i class="fa-solid fa-bolt"></i>
+              Prioridad
+            </label>
+
+            <select id="prioridad">
+              <option value="alta">Alta</option>
+
+              <option value="media">Media</option>
+
+              <option value="baja">Baja</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>
+              <i class="fa-solid fa-calendar-days"></i>
+              Fecha
+            </label>
+
+            <input id="fecha" type="date" />
+          </div>
+
+          <button class="btn-add" type="submit">
+            <i class="fa-solid fa-plus"></i>
+
+            Agregar
+          </button>
+        </form>
+
+        <p id="mensaje"></p>
+      </section>
+
+      <section class="summary">
+        <article>
+          <i class="fa-solid fa-layer-group"></i>
+
+          <div>
+            <span>Total</span>
+
+            <strong id="total"> 0 </strong>
+          </div>
+        </article>
+
+        <article>
+          <i class="fa-solid fa-clock"></i>
+
+          <div>
+            <span>Pendientes</span>
+
+            <strong id="pendientes"> 0 </strong>
+          </div>
+        </article>
+
+        <article>
+          <i class="fa-solid fa-circle-check"></i>
+
+          <div>
+            <span>Completadas</span>
+
+            <strong id="completados"> 0 </strong>
+          </div>
+        </article>
+      </section>
+
+      <section class="box">
+        <div class="section-header">
+          <i class="fa-solid fa-list-ul"></i>
+
+          <h2>Lista de tareas</h2>
+        </div>
+
+        <ul id="lista-tareas"></ul>
+      </section>
+    </main>
+
+    <footer>
+      <i class="fa-solid fa-code"></i>
+
+      Desarrollado por Edison
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
