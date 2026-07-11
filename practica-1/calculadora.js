@@ -1,8 +1,8 @@
-const promt = require('prompt-sync')();
+const prompt = require('prompt-sync')();
 
 console.log("Calculadora de Propinas: \n");
 
-const montoCuenta = parseFloat(promt("Ingrese el monto de la cuenta: $"));
+const montoCuenta = parseFloat(prompt("Ingrese el monto de la cuenta: $"));
 
 if (isNaN(montoCuenta) || montoCuenta <= 0) {
     console.log("Por favor, ingrese un monto válido mayor a 0.");
