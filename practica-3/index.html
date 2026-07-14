@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Dashboard API</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <header class="navbar">
+      <div class="brand">
+        <div class="brand-logo">
+          <i class="fa-solid fa-cloud"></i>
+        </div>
+
+        <div>
+          <h1>Dashboard API</h1>
+
+          <span> REST Integration </span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="api-selector">
+        <button class="api active" data-api="usuarios">
+          <i class="fa-solid fa-id-card"></i>
+
+          <div>
+            <strong> Usuarios </strong>
+
+            <small> ReqRes API </small>
+          </div>
+        </button>
+
+        <button class="api" data-api="clima">
+          <i class="fa-solid fa-cloud-sun"></i>
+
+          <div>
+            <strong> Clima </strong>
+
+            <small> Open Meteo API </small>
+          </div>
+        </button>
+
+        <button class="api" data-api="pokemon">
+          <i class="fa-solid fa-dragon"></i>
+
+          <div>
+            <strong> Pokémon </strong>
+
+            <small> PokéAPI </small>
+          </div>
+        </button>
+      </div>
+
+      <section id="usuarios" class="panel active">
+        <div id="listaUsuarios" class="usuarios"></div>
+      </section>
+
+      <section id="clima" class="panel">
+        <div class="weather-select">
+          <button class="city active" data-city="guayaquil">Guayaquil</button>
+
+          <button class="city" data-city="quito">Quito</button>
+
+          <button class="city" data-city="cuenca">Cuenca</button>
+
+          <button class="city" data-city="loja">Loja</button>
+
+          <button class="city" data-city="ambato">Ambato</button>
+
+          <button class="city" data-city="manta">Manta</button>
+        </div>
+
+        <div class="clima-grid">
+          <div class="clima-card">
+            <i class="fa-solid fa-location-dot location"></i>
+
+            <span> Ciudad </span>
+
+            <b id="cCiudad"> -- </b>
+          </div>
+
+          <div class="clima-card">
+            <i class="fa-solid fa-temperature-half temperature"></i>
+
+            <span> Temperatura </span>
+
+            <b id="cTemperatura"> -- </b>
+          </div>
+
+          <div class="clima-card">
+            <i class="fa-solid fa-temperature-arrow-up sensation"></i>
+
+            <span> Sensación </span>
+
+            <b id="cSensacion"> -- </b>
+          </div>
+
+          <div class="clima-card">
+            <i class="fa-solid fa-droplet humidity"></i>
+
+            <span> Humedad </span>
+
+            <b id="cHumedad"> -- </b>
+          </div>
+
+          <div class="clima-card">
+            <i class="fa-solid fa-wind wind"></i>
+
+            <span> Viento </span>
+
+            <b id="cViento"> -- </b>
+          </div>
+
+          <div class="clima-card">
+            <i class="fa-solid fa-compass direction"></i>
+
+            <span> Dirección </span>
+
+            <b id="cDireccion"> -- </b>
+          </div>
+
+          <div class="clima-card">
+            <i class="fa-solid fa-gauge pressure"></i>
+
+            <span> Presión </span>
+
+            <b id="cPresion"> -- </b>
+          </div>
+
+          <div class="clima-card">
+            <i class="fa-solid fa-cloud-rain rain"></i>
+
+            <span> Precipitación </span>
+
+            <b id="cLluvia"> -- </b>
+          </div>
+        </div>
+      </section>
+
+      <section id="pokemon" class="panel">
+        <div id="listaPokemon" class="pokemon-grid"></div>
+      </section>
+    </main>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
