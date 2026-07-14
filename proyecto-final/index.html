@@ -1,13 +1,81 @@
 <!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Proyecto Final</title>
-</head>
-<body>
-  <div id="app"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Quito Coffee Roasters - Café de especialidad ecuatoriano"
+    />
+    <meta name="author" content="Desarrollador del proyecto" />
+    <title>Quito Coffee Roasters | Café de Especialidad</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
 
-  <script type="module" src="/src/main.js"></script>
-</body>
+  <body>
+    <header role="banner" id="inicio">
+      <nav aria-label="Navegación principal">
+        <a href="#inicio" aria-label="Ir al inicio de Quito Coffee Roasters">
+          Quito Coffee Roasters
+        </a>
+
+        <ul aria-label="Menú principal">
+          <li>
+            <a href="#catalogo"> Cafés </a>
+          </li>
+
+          <li>
+            <a href="#pedido"> Pedido </a>
+          </li>
+
+          <li>
+            <a href="#contacto"> Contacto </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="app" role="main">
+
+      <section id="hero" aria-labelledby="hero-title">
+        <h1 id="hero-title">Quito Coffee Roasters</h1>
+
+        <p>
+          Café de especialidad tostado artesanalmente desde el corazón de Quito.
+        </p>
+
+        <div id="weather-container" aria-live="polite">Cargando clima...</div>
+
+        <div id="quote-container" aria-live="polite">
+          Cargando frase del día...
+        </div>
+      </section>
+
+      <section id="catalogo" aria-labelledby="catalog-title">
+        <h2 id="catalog-title">Nuestro Café</h2>
+
+        <div id="coffee-list" aria-live="polite"></div>
+      </section>
+
+      <section id="pedido" aria-labelledby="order-title">
+        <h2 id="order-title">Tu Pedido</h2>
+
+        <div id="cart-container"></div>
+      </section>
+
+      <section id="contacto" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contáctanos</h2>
+
+        <form id="contact-form" novalidate>
+          <div id="form-message"></div>
+        </form>
+      </section>
+    </main>
+
+    <footer role="contentinfo">
+      <p>© 2026 Quito Coffee Roasters. Todos los derechos reservados.</p>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>
