@@ -1,7 +1,7 @@
 <header
   class="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-black/5"
 >
-  <nav class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
+  <nav class="max-w-7xl mx-auto px-8 py-3 flex items-center justify-between">
     <a
       href="#inicio"
       class="group flex items-center gap-3 font-medium tracking-tight text-black"
@@ -14,6 +14,43 @@
 
       <span>Quito Coffee</span>
     </a>
+
+    <div
+      id="weather-widget"
+      class="hidden md:flex items-center gap-4 text-sm text-black/60"
+    >
+      <span id="weather-loading"> Cargando clima... </span>
+
+      <div id="weather-content" class="hidden items-center gap-4">
+        <div class="flex items-center gap-1">
+          <i data-lucide="map-pin" class="w-4 h-4 text-[#8A9A5B]"></i>
+
+          <span> Quito </span>
+        </div>
+
+        <div class="flex items-center gap-1">
+          <i data-lucide="thermometer" class="w-4 h-4 text-[#8A9A5B]"></i>
+
+          <span id="weather-temperature"></span>
+        </div>
+
+        <div class="flex items-center gap-1">
+          <i
+            id="weather-icon"
+            data-lucide="cloud"
+            class="w-4 h-4 text-[#8A9A5B]"
+          ></i>
+
+          <span id="weather-description"></span>
+        </div>
+
+        <div class="flex items-center gap-1">
+          <i data-lucide="wind" class="w-4 h-4 text-[#8A9A5B]"></i>
+
+          <span id="weather-wind"></span>
+        </div>
+      </div>
+    </div>
 
     <div class="hidden md:flex items-center gap-8 text-sm text-black/60">
       <a

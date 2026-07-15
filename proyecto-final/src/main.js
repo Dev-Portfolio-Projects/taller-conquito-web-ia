@@ -3,7 +3,7 @@ import './styles/main.css';
 import Navbar from './components/layout/Navbar/Navbar.js';
 import Hero from './components/home/Hero.js';
 import Footer from './components/layout/Footer/Footer.js';
-
+import { loadWeather } from './components/layout/Navbar/Navbar.js';
 import { createIcons, icons } from 'lucide';
 
 const App = () => `
@@ -20,7 +20,7 @@ const render = () => {
   document.querySelector('#app').innerHTML = App();
 
   createIcons({ icons });
-
+  loadWeather();
   const menuButton = document.querySelector('#menu-button');
   const mobileMenu = document.querySelector('#mobile-menu');
 
