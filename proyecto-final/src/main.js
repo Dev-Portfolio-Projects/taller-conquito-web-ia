@@ -9,17 +9,18 @@ import Catalog, {
   initCatalogFilters,
 } from './components/catalog/Catalog.js';
 
+import Cart, { renderCart, initCart } from './components/cart/Cart.js';
 import { createIcons, icons } from 'lucide';
 
 const App = () => `
-
 <div class="app-layout">
-    ${Navbar()}
-    <main id="main-content">
-    </main>
-    ${Footer()}
-</div>
 
+  ${Navbar()}
+  <main id="main-content"></main>
+  ${Cart()}
+  ${Footer()}
+
+</div>
 `;
 
 const renderPage = () => {
@@ -27,61 +28,49 @@ const renderPage = () => {
 
   if (!main) return;
 
-  const hash = window.location.hash;
-
-  switch (hash) {
+  switch (window.location.hash) {
     case '#catalogo':
       main.innerHTML = Catalog();
-
       renderCatalog();
       initCatalogFilters();
-
       break;
 
     case '#historia':
       main.innerHTML = `
-            <section class="py-24 px-8">
-                <h1 class="text-4xl font-semibold">
-                    Nuestra historia
-                </h1>
-            </section>
-            `;
-
+        <section class="py-24 px-8">
+          <h1 class="text-4xl font-semibold">
+            Nuestra historia
+          </h1>
+        </section>
+      `;
       break;
 
     case '#contacto':
       main.innerHTML = `
-            <section class="py-24 px-8">
-                <h1 class="text-4xl font-semibold">
-                    Contacto
-                </h1>
-            </section>
-            `;
-
+        <section class="py-24 px-8">
+          <h1 class="text-4xl font-semibold">
+            Contacto
+          </h1>
+        </section>
+      `;
       break;
 
     default:
       main.innerHTML = Hero();
-
       loadQuote();
-
       break;
   }
 
-  createIcons({
-    icons,
-  });
+  createIcons({ icons });
 };
 
 const render = () => {
   document.querySelector('#app').innerHTML = App();
 
-  createIcons({
-    icons,
-  });
-
+  createIcons({ icons });
   loadWeather();
   renderPage();
+  initCart();
 
   const menuButton = document.querySelector('#menu-button');
   const mobileMenu = document.querySelector('#mobile-menu');

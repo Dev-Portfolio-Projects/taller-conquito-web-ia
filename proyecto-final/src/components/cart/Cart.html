@@ -1,0 +1,108 @@
+<div
+  id="cart-overlay"
+  class="hidden fixed inset-0 bg-black/30 backdrop-blur-sm z-40"
+></div>
+
+<aside
+  id="cart-drawer"
+  class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-50 shadow-2xl translate-x-full transition-transform duration-300 flex flex-col"
+>
+  <div
+    class="flex items-center justify-between px-6 py-2 border-b border-black/10"
+  >
+    <div class="flex items-center gap-3">
+      <i data-lucide="shopping-bag" class="w-5 h-5 text-[#8A9A5B]"></i>
+
+      <div>
+        <h2 class="font-semibold">Tu carrito</h2>
+        <p class="text-xs text-black/40">Tus cafés seleccionados</p>
+      </div>
+    </div>
+
+    <button
+      id="close-cart"
+      class="w-8 h-8 rounded-full hover:bg-black/5 flex items-center justify-center transition"
+    >
+      <i data-lucide="x" class="w-5 h-5"></i>
+    </button>
+  </div>
+
+  <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4"></div>
+
+  <div class="border-t border-black/10 p-6 bg-white">
+    <div class="relative">
+      <i
+        data-lucide="map-pin"
+        class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-black/40"
+      ></i>
+
+      <select
+        id="delivery-zone"
+        disabled
+        class="appearance-none w-full rounded-full border border-black/10 pl-11 pr-12 py-3 text-sm outline-none focus:ring-2 focus:ring-[#8A9A5B] disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
+      >
+        <option value="0">Seleccione zona</option>
+        <option value="2.50">Norte - $2.50</option>
+        <option value="1.80">Centro - $1.80</option>
+        <option value="3">Sur - $3.00</option>
+        <option value="3.50">Valles - $3.50</option>
+      </select>
+      <i
+        data-lucide="chevron-down"
+        class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-black/40 pointer-events-none"
+      ></i>
+    </div>
+
+    <div class="mt-5 space-y-3 text-sm">
+      <div class="flex justify-between">
+        <span class="text-black/50">Subtotal</span>
+        <strong id="subtotal">$0.00</strong>
+      </div>
+
+      <div class="flex justify-between">
+        <span class="text-black/50">Envío</span>
+        <strong id="shipping">$0.00</strong>
+      </div>
+
+      <div class="border-t border-black/10 pt-4 flex justify-between">
+        <span class="font-semibold">Total</span>
+        <strong id="total" class="text-lg">$0.00</strong>
+      </div>
+
+      <div class="border-t border-black/10 pt-4 space-y-2">
+        <div class="flex justify-between text-[#8A9A5B]">
+          <span>EUR (€)</span>
+          <strong id="eur-total">-</strong>
+        </div>
+
+        <div class="flex justify-between text-[#8A9A5B]">
+          <span>GBP (£)</span>
+          <strong id="gbp-total">-</strong>
+        </div>
+
+        <div class="flex justify-between text-[#8A9A5B]">
+          <span>JPY (¥)</span>
+          <strong id="jpy-total">-</strong>
+        </div>
+
+        <div class="flex justify-between text-[#8A9A5B]">
+          <span>COP ($)</span>
+          <strong id="cop-total">-</strong>
+        </div>
+
+        <div class="flex justify-between text-[#8A9A5B]">
+          <span>MXN ($)</span>
+          <strong id="mxn-total">-</strong>
+        </div>
+      </div>
+    </div>
+
+    <a
+      id="checkout-button"
+      href="#pedido"
+      class="mt-5 block text-center bg-[#8A9A5B] text-white rounded-full py-3 text-sm transition opacity-50 cursor-not-allowed pointer-events-none"
+    >
+      Ver pedido completo
+    </a>
+  </div>
+</aside>

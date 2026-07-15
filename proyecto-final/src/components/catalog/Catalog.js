@@ -1,188 +1,169 @@
 import catalogTemplate from './Catalog.html?raw';
 import { createIcons, icons } from 'lucide';
 import { coffees } from '../../data/coffees.js';
+import { addToCart } from '../../state/store.js';
+import { renderCart, openCart } from '../cart/Cart.js';
 
 const Catalog = () => catalogTemplate;
 
 const createCard = (coffee) => {
   return `
+    <article
+      class="
+      bg-white
+      rounded-2xl
+      overflow-hidden
+      border
+      border-black/5
+      shadow-sm
+      hover:shadow-lg
+      transition
+      group
+      flex
+      flex-col
+      "
+    >
 
-<article
-class="
-bg-white
-rounded-2xl
-overflow-hidden
-border
-border-black/5
-shadow-sm
-hover:shadow-lg
-transition
-group
-flex
-flex-col
-"
->
+      <div class="overflow-hidden">
 
+        <img
+          src="${coffee.image}"
+          alt="${coffee.name}"
+          class="
+          w-full
+          h-40
+          object-cover
+          group-hover:scale-105
+          transition
+          duration-500
+          "
+        />
 
-<div class="overflow-hidden">
+      </div>
 
-<img
-src="${coffee.image}"
-alt="${coffee.name}"
-class="
-w-full
-h-40
-object-cover
-group-hover:scale-105
-transition
-duration-500
-"
-/>
+      <div class="p-5 flex flex-col flex-1">
 
-</div>
+        <h3 class="font-semibold text-lg">
+          ${coffee.name}
+        </h3>
 
+        <div
+          class="
+          flex
+          items-center
+          gap-2
+          text-xs
+          text-[#8A9A5B]
+          mt-2
+          "
+        >
 
+          <i
+            data-lucide="map-pin"
+            class="w-3.5 h-3.5"
+          ></i>
 
-<div class="p-5 flex flex-col flex-1">
+          ${coffee.origin}
 
+        </div>
 
-<h3
-class="
-font-semibold
-text-lg
-"
->
-${coffee.name}
-</h3>
+        <div
+          class="
+          flex
+          items-start
+          gap-2
+          text-sm
+          text-black/50
+          mt-3
+          min-h-[52px]
+          "
+        >
 
+          <i
+            data-lucide="coffee"
+            class="w-4 h-4 mt-0.5"
+          ></i>
 
+          <p>
+            ${coffee.notes}
+          </p>
 
-<div
-class="
-flex
-items-center
-gap-2
-text-xs
-text-[#8A9A5B]
-mt-2
-"
->
+        </div>
 
-<i
-data-lucide="map-pin"
-class="w-3.5 h-3.5"
-></i>
+        <div
+          class="
+          flex
+          items-center
+          justify-between
+          mt-auto
+          pt-5
+          "
+        >
 
-${coffee.origin}
+          <div
+            class="
+            flex
+            items-center
+            gap-2
+            font-semibold
+            "
+          >
 
-</div>
+            <i
+              data-lucide="badge-dollar-sign"
+              class="w-4 h-4 text-[#8A9A5B]"
+            ></i>
 
+            $${coffee.price.toFixed(2)}
 
+          </div>
 
+          <button
+            class="
+            add-coffee
+            flex
+            items-center
+            gap-2
+            bg-[#8A9A5B]
+            text-white
+            rounded-full
+            px-4
+            py-2
+            text-xs
+            hover:bg-[#718044]
+            transition
+            "
+            data-id="${coffee.id}"
+          >
 
-<div
-class="
-flex
-items-start
-gap-2
-text-sm
-text-black/50
-mt-3
-min-h-[52px]
-"
->
+            <i
+              data-lucide="shopping-cart"
+              class="w-4 h-4"
+            ></i>
 
-<i
-data-lucide="coffee"
-class="w-4 h-4 mt-0.5"
-></i>
+            Agregar
 
+          </button>
+        </div>
+      </div>
+    </article>
+  `;
+};
 
-<p>
-${coffee.notes}
-</p>
+const attachEvents = () => {
+  document.querySelectorAll('.add-coffee').forEach((button) => {
+    button.addEventListener('click', () => {
+      const product = coffees.find(
+        (coffee) => coffee.id === Number(button.dataset.id),
+      );
 
+      if (!product) return;
 
-</div>
-
-
-
-
-<div
-class="
-flex
-items-center
-justify-between
-mt-auto
-pt-5
-"
->
-
-
-<div
-class="
-flex
-items-center
-gap-2
-font-semibold
-"
->
-
-<i
-data-lucide="badge-dollar-sign"
-class="w-4 h-4 text-[#8A9A5B]"
-></i>
-
-
-$${coffee.price.toFixed(2)}
-
-</div>
-
-
-
-
-<button
-class="
-add-coffee
-flex
-items-center
-gap-2
-bg-[#8A9A5B]
-text-white
-rounded-full
-px-4
-py-2
-text-xs
-hover:bg-[#718044]
-transition
-"
-data-id="${coffee.id}"
->
-
-
-<i
-data-lucide="shopping-cart"
-class="w-4 h-4"
-></i>
-
-
-Agregar
-
-
-</button>
-
-
-
-</div>
-
-
-</div>
-
-
-</article>
-
-
-`;
+      addToCart(product);
+      renderCart();
+      openCart();
+    });
+  });
 };
 
 const renderCards = (data) => {
@@ -190,15 +171,11 @@ const renderCards = (data) => {
 
   if (!container) return;
 
-  // Mantener siempre el grid correcto
   container.className = 'mt-5 grid sm:grid-cols-2 lg:grid-cols-4 gap-6';
-
   container.innerHTML = data.map(createCard).join('');
 
-  // Reactivar iconos Lucide después del render dinámico
-  createIcons({
-    icons,
-  });
+  createIcons({ icons });
+  attachEvents();
 };
 
 export const renderCatalog = () => {
@@ -207,19 +184,16 @@ export const renderCatalog = () => {
 
 export const initCatalogFilters = () => {
   const search = document.querySelector('#search-coffee');
-
   const filter = document.querySelector('#origin-filter');
 
   if (!search || !filter) return;
 
   const update = () => {
     const text = search.value.toLowerCase();
-
     const origin = filter.value;
 
     const result = coffees.filter((coffee) => {
       const matchName = coffee.name.toLowerCase().includes(text);
-
       const matchOrigin = origin === 'Todos' || coffee.origin === origin;
 
       return matchName && matchOrigin;
@@ -229,7 +203,6 @@ export const initCatalogFilters = () => {
   };
 
   search.addEventListener('input', update);
-
   filter.addEventListener('change', update);
 };
 
