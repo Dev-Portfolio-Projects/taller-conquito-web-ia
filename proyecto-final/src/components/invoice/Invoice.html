@@ -1,0 +1,188 @@
+<section
+  class="min-h-[calc(100vh-100px)] bg-[#FAF9F6] flex items-start pt-20 px-8"
+>
+  <div class="max-w-7xl mx-auto w-full">
+    <div class="mb-10">
+      <h1 class="text-3xl md:text-4xl font-semibold text-black">Facturación</h1>
+
+      <p class="text-sm text-black/50 mt-3 max-w-md leading-relaxed">
+        Completa tus datos personales para generar la factura electrónica de tu
+        pedido.
+      </p>
+    </div>
+
+    <div class="grid xl:grid-cols-2 gap-8">
+      <div class="bg-white rounded-3xl border border-black/5 shadow-sm p-8">
+        <h2 class="font-semibold mb-5">Datos personales</h2>
+
+        <form id="invoice-form" class="space-y-4">
+          <div class="relative">
+            <i
+              data-lucide="user"
+              class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-black/40 pointer-events-none"
+            ></i>
+
+            <input
+              id="customer-name"
+              type="text"
+              placeholder="Nombre completo"
+              class="w-full rounded-full border border-black/10 pl-11 pr-5 py-3 text-sm outline-none focus:ring-2 focus:ring-[#8A9A5B]"
+              required
+            />
+          </div>
+
+          <p id="name-error" class="hidden text-xs text-red-500">
+            Ingrese un nombre válido
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <div class="relative">
+                <i
+                  data-lucide="id-card"
+                  class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-black/40 pointer-events-none"
+                ></i>
+
+                <input
+                  id="customer-id"
+                  type="text"
+                  placeholder="Cédula / RUC"
+                  class="w-full rounded-full border border-black/10 pl-11 pr-5 py-3 text-sm outline-none focus:ring-2 focus:ring-[#8A9A5B]"
+                  required
+                />
+              </div>
+
+              <p id="id-error" class="hidden mt-1 text-xs text-red-500">
+                Ingrese una cédula o RUC válida
+              </p>
+            </div>
+
+            <div>
+              <div class="relative">
+                <i
+                  data-lucide="phone"
+                  class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-black/40 pointer-events-none"
+                ></i>
+
+                <input
+                  id="customer-phone"
+                  type="tel"
+                  placeholder="Teléfono"
+                  class="w-full rounded-full border border-black/10 pl-11 pr-5 py-3 text-sm outline-none focus:ring-2 focus:ring-[#8A9A5B]"
+                  required
+                />
+              </div>
+
+              <p id="phone-error" class="hidden mt-1 text-xs text-red-500">
+                Ingrese un teléfono válido
+              </p>
+            </div>
+          </div>
+
+          <div class="relative">
+            <i
+              data-lucide="mail"
+              class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-black/40 pointer-events-none"
+            ></i>
+
+            <input
+              id="customer-email"
+              type="email"
+              placeholder="Correo electrónico"
+              class="w-full rounded-full border border-black/10 pl-11 pr-5 py-3 text-sm outline-none focus:ring-2 focus:ring-[#8A9A5B]"
+              required
+            />
+          </div>
+
+          <p id="email-error" class="hidden text-xs text-red-500">
+            Ingrese un correo válido
+          </p>
+
+          <div class="relative">
+            <i
+              data-lucide="map-pin"
+              class="absolute left-4 top-5 w-4 h-4 text-black/40 pointer-events-none"
+            ></i>
+
+            <textarea
+              id="customer-address"
+              rows="3"
+              placeholder="Dirección de entrega"
+              class="w-full rounded-2xl border border-black/10 pl-11 pr-5 py-3 text-sm outline-none focus:ring-2 focus:ring-[#8A9A5B] resize-none"
+              required
+            ></textarea>
+          </div>
+
+          <p id="address-error" class="hidden text-xs text-red-500">
+            Ingrese una dirección válida
+          </p>
+        </form>
+      </div>
+
+      <div class="bg-white rounded-3xl border border-black/5 shadow-sm p-8">
+        <h2 class="font-semibold mb-5">Resumen del pedido</h2>
+
+        <div id="invoice-items" class="space-y-3"></div>
+
+        <div class="border-t border-black/10 mt-6 pt-5 space-y-3 text-sm">
+          <div class="flex justify-between">
+            <span class="text-black/50"> Subtotal </span>
+            <strong id="invoice-subtotal"> $0.00 </strong>
+          </div>
+
+          <div class="flex justify-between">
+            <span class="text-black/50"> Envío </span>
+            <strong id="invoice-shipping"> $0.00 </strong>
+          </div>
+
+          <div class="flex justify-between text-lg">
+            <span class="font-semibold"> Total </span>
+            <strong id="invoice-total"> $0.00 </strong>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          id="generate-pdf"
+          disabled
+          class="mt-6 w-full bg-[#8A9A5B] text-white rounded-full py-3 text-sm hover:bg-[#718044] transition disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
+        >
+          Generar factura PDF
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div
+    id="pdf-modal"
+    class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-[200] items-center justify-center p-6"
+  >
+    <div
+      class="bg-white rounded-3xl w-full max-w-4xl h-[90vh] flex flex-col overflow-hidden"
+    >
+      <div
+        class="flex items-center justify-between p-5 border-b border-black/10"
+      >
+        <h2 class="font-semibold">Vista previa factura</h2>
+
+        <button
+          id="close-pdf-modal"
+          class="w-8 h-8 rounded-full hover:bg-black/5"
+        >
+          ✕
+        </button>
+      </div>
+
+      <iframe id="pdf-preview" class="flex-1 w-full"></iframe>
+
+      <div class="p-5 border-t border-black/10">
+        <button
+          id="download-pdf"
+          class="w-full bg-[#8A9A5B] text-white rounded-full py-3 text-sm hover:bg-[#718044] transition"
+        >
+          Descargar PDF
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

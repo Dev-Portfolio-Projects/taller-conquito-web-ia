@@ -61,7 +61,7 @@ const getActiveLink = (section) => {
 const Navbar = () => {
   return navbarTemplate
     .replaceAll('{{catalogo}}', getActiveLink('catalogo'))
-    .replaceAll('{{historia}}', getActiveLink('historia'))
+    .replaceAll('{{facturacion}}', getActiveLink('facturacion'))
     .replaceAll('{{contacto}}', getActiveLink('contacto'));
 };
 

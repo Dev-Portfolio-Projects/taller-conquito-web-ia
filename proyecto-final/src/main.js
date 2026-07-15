@@ -9,7 +9,15 @@ import Catalog, {
   initCatalogFilters,
 } from './components/catalog/Catalog.js';
 
-import Cart, { renderCart, initCart } from './components/cart/Cart.js';
+import Cart, {
+  renderCart,
+  initCart,
+  closeCart,
+} from './components/cart/Cart.js';
+import Invoice, {
+  renderInvoice,
+  initInvoice,
+} from './components/invoice/Invoice.js';
 import { createIcons, icons } from 'lucide';
 
 const App = () => `
@@ -35,24 +43,11 @@ const renderPage = () => {
       initCatalogFilters();
       break;
 
-    case '#historia':
-      main.innerHTML = `
-        <section class="py-24 px-8">
-          <h1 class="text-4xl font-semibold">
-            Nuestra historia
-          </h1>
-        </section>
-      `;
-      break;
-
-    case '#contacto':
-      main.innerHTML = `
-        <section class="py-24 px-8">
-          <h1 class="text-4xl font-semibold">
-            Contacto
-          </h1>
-        </section>
-      `;
+    case '#facturacion':
+      closeCart();
+      main.innerHTML = Invoice();
+      renderInvoice();
+      initInvoice();
       break;
 
     default:
