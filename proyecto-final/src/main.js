@@ -1,13 +1,36 @@
 import './styles/main.css';
 
+import Navbar from './components/layout/Navbar/Navbar.js';
+import Hero from './components/home/Hero.js';
+import Footer from './components/layout/Footer/Footer.js';
 
-const initializeApp = () => {
+import { createIcons, icons } from 'lucide';
 
-  console.log(
-    '☕ Quito Coffee Roasters iniciado'
-  );
+const App = () => `
+<div class="app-layout">
+    ${Navbar()}
+    <main>
+        ${Hero()}
+    </main>
+    ${Footer()}
+</div>
+`;
 
+const render = () => {
+  document.querySelector('#app').innerHTML = App();
+
+  createIcons({ icons });
+
+  const menuButton = document.querySelector('#menu-button');
+  const mobileMenu = document.querySelector('#mobile-menu');
+
+  menuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
 };
 
+render();
 
-initializeApp();
+window.addEventListener('hashchange', () => {
+  render();
+});

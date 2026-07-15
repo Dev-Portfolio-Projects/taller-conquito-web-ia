@@ -1,16 +1,9 @@
 :root {
-  --coffee-dark: #3b2416;
-  --coffee-medium: #6f4e37;
-  --coffee-light: #a67b5b;
-
-  --cream: #f8f1e7;
-  --latte: #e8d8c3;
-
-  --caramel: #c89b3c;
-
-  --success: #2e7d32;
-  --error: #c62828;
-
-  --text-dark: #2d2118;
-  --text-light: #ffffff;
+  --black: #111111;
+  --white: #ffffff;
+  --gray: #666666;
+  --olive: #8a9a5b;
+  --blue: #a8c7d9;
+  --clay: #c96b4b;
+  --border: rgba(0, 0, 0, 0.08);
 }

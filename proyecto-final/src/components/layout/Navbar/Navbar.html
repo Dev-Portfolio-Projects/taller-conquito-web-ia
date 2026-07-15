@@ -1,0 +1,107 @@
+<header
+  class="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-black/5"
+>
+  <nav class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
+    <a
+      href="#inicio"
+      class="group flex items-center gap-3 font-medium tracking-tight text-black"
+    >
+      <span
+        class="flex items-center justify-center w-9 h-9 rounded-full bg-black text-white group-hover:bg-[#8A9A5B] transition"
+      >
+        <i data-lucide="coffee" class="w-4 h-4"></i>
+      </span>
+
+      <span>Quito Coffee</span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-8 text-sm text-black/60">
+      <a
+        href="#catalogo"
+        class="nav-link {{catalogo}} group flex items-center gap-2 hover:text-black transition"
+      >
+        <i
+          data-lucide="coffee"
+          class="w-4 h-4 stroke-[1.5] group-hover:stroke-[#8A9A5B] transition"
+        ></i>
+
+        <span>Cafés</span>
+      </a>
+
+      <a
+        href="#historia"
+        class="nav-link {{historia}} group flex items-center gap-2 hover:text-black transition"
+      >
+        <i
+          data-lucide="book-open"
+          class="w-4 h-4 stroke-[1.5] group-hover:stroke-[#8A9A5B] transition"
+        ></i>
+
+        <span>Historia</span>
+      </a>
+
+      <a
+        href="#contacto"
+        class="nav-link {{contacto}} group flex items-center gap-2 hover:text-black transition"
+      >
+        <i
+          data-lucide="mail"
+          class="w-4 h-4 stroke-[1.5] group-hover:stroke-[#8A9A5B] transition"
+        ></i>
+
+        <span>Contacto</span>
+      </a>
+    </div>
+
+    <button
+      id="menu-button"
+      class="md:hidden w-10 h-10 rounded-full flex items-center justify-center hover:bg-black/5 transition"
+      aria-label="Abrir menú"
+    >
+      <i data-lucide="menu" id="menu-icon" class="w-5 h-5"></i>
+    </button>
+  </nav>
+
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-white border-t border-black/5"
+  >
+    <div class="px-8 py-6 flex flex-col gap-5 text-sm text-black/70">
+      <a
+        href="#catalogo"
+        class="mobile-link {{catalogo}} group flex items-center gap-3 hover:text-black transition"
+      >
+        <i
+          data-lucide="coffee"
+          class="w-4 h-4 stroke-[1.5] group-hover:stroke-[#8A9A5B] transition"
+        ></i>
+
+        <span>Cafés</span>
+      </a>
+
+      <a
+        href="#historia"
+        class="mobile-link {{historia}} group flex items-center gap-3 hover:text-black transition"
+      >
+        <i
+          data-lucide="book-open"
+          class="w-4 h-4 stroke-[1.5] group-hover:stroke-[#8A9A5B] transition"
+        ></i>
+
+        <span>Historia</span>
+      </a>
+
+      <a
+        href="#contacto"
+        class="mobile-link {{contacto}} group flex items-center gap-3 hover:text-black transition"
+      >
+        <i
+          data-lucide="mail"
+          class="w-4 h-4 stroke-[1.5] group-hover:stroke-[#8A9A5B] transition"
+        ></i>
+
+        <span>Contacto</span>
+      </a>
+    </div>
+  </div>
+</header>
