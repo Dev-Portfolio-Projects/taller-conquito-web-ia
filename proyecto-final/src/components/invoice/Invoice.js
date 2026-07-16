@@ -1,8 +1,121 @@
 import invoiceTemplate from './Invoice.html?raw';
+import invoicePDFTemplate from './InvoicePDF.html?raw';
+
+import './InvoicePDF.css';
+
+import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
-import { getCart, clearCart } from '../../state/store.js';
+
+import {
+  getCart,
+  clearCart,
+  calculateSubtotal,
+  calculateIVA,
+  calculateTotal,
+} from '../../state/store.js';
 
 let pdfBlobUrl = null;
+
+const createInvoiceHTML = (customer) => {
+  let html = invoicePDFTemplate;
+
+  const cart = getCart();
+  const subtotal = calculateSubtotal();
+  const iva = calculateIVA();
+  const shipping = Number(document.querySelector('#delivery-zone')?.value || 0);
+  const total = calculateTotal(shipping);
+
+  const productsHTML = cart
+    .map(
+      (product) => `
+
+      <tr>
+
+        <td>
+          ${product.name}
+        </td>
+
+        <td>
+          ${product.quantity}
+        </td>
+
+        <td>
+          $${product.price.toFixed(2)}
+        </td>
+
+        <td>
+          $${(product.price * product.quantity).toFixed(2)}
+        </td>
+
+      </tr>
+
+      `,
+    )
+    .join('');
+
+  html = html
+    .replace('{{invoiceNumber}}', `FAC-${Date.now().toString().slice(-6)}`)
+    .replace('{{date}}', new Date().toLocaleDateString())
+    .replace('{{name}}', customer.name)
+    .replace('{{id}}', customer.id)
+    .replace('{{phone}}', customer.phone)
+    .replace('{{email}}', customer.email)
+    .replace('{{address}}', customer.address)
+    .replace('{{subtotal}}', `$${subtotal.toFixed(2)}`)
+    .replace('{{iva}}', `$${iva.toFixed(2)}`)
+    .replace('{{shipping}}', `$${shipping.toFixed(2)}`)
+    .replace('{{total}}', `$${total.toFixed(2)}`);
+
+  html = html.replace(
+    '<tbody id="invoice-products"></tbody>',
+    `
+    <tbody>
+      ${productsHTML}
+    </tbody>
+    `,
+  );
+
+  return html;
+};
+
+const generatePDFFromHTML = async (html) => {
+  const container = document.createElement('div');
+
+  container.innerHTML = `
+<div class="pdf-wrapper">
+${html}
+</div>
+`;
+
+  container.style.position = 'absolute';
+  container.style.left = '-10000px';
+  container.style.top = '0';
+  container.style.width = '794px';
+  container.style.background = '#ffffff';
+  container.style.visibility = 'hidden';
+
+  document.body.appendChild(container);
+
+  const invoice = container.querySelector('#pdf-invoice-template');
+  container.style.visibility = 'visible';
+
+  const canvas = await html2canvas(invoice, {
+    scale: 2,
+    useCORS: true,
+    backgroundColor: '#ffffff',
+    windowWidth: 794,
+  });
+
+  const imgData = canvas.toDataURL('image/png');
+  const pdf = new jsPDF('p', 'mm', 'a4');
+  const pdfWidth = pdf.internal.pageSize.getWidth();
+  const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+  pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, Math.min(pdfHeight, 297));
+  container.remove();
+
+  return pdf.output('blob');
+};
 
 const Invoice = () => invoiceTemplate;
 
@@ -11,6 +124,7 @@ export const renderInvoice = () => {
   const subtotalElement = document.querySelector('#invoice-subtotal');
   const shippingElement = document.querySelector('#invoice-shipping');
   const totalElement = document.querySelector('#invoice-total');
+  const ivaElement = document.querySelector('#invoice-iva');
 
   if (!itemsContainer || !subtotalElement || !shippingElement || !totalElement)
     return;
@@ -49,14 +163,12 @@ export const renderInvoice = () => {
     )
     .join('');
 
-  const subtotal = cart.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0,
-  );
-
+  const subtotal = calculateSubtotal();
+  const iva = calculateIVA();
   const shipping = Number(document.querySelector('#delivery-zone')?.value || 0);
-  const total = subtotal + shipping;
+  const total = calculateTotal(shipping);
   subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+  ivaElement.textContent = `$${iva.toFixed(2)}`;
   shippingElement.textContent = `$${shipping.toFixed(2)}`;
   totalElement.textContent = `$${total.toFixed(2)}`;
 };
@@ -195,7 +307,7 @@ const validateInvoiceForm = (showErrors = false) => {
   return valid;
 };
 
-export const generateInvoicePDF = () => {
+export const generateInvoicePDF = async () => {
   const cart = getCart();
 
   if (cart.length === 0) {
@@ -216,44 +328,8 @@ export const generateInvoicePDF = () => {
     address: document.querySelector('#customer-address').value,
   };
 
-  const pdf = new jsPDF();
-
-  pdf.setFontSize(20);
-  pdf.text('Quito Coffee', 20, 20);
-  pdf.setFontSize(12);
-  pdf.text(`Factura de compra`, 20, 30);
-  pdf.text(`Cliente: ${customer.name}`, 20, 45);
-  pdf.text(`Cédula/RUC: ${customer.id}`, 20, 55);
-  pdf.text(`Teléfono: ${customer.phone}`, 20, 65);
-  pdf.text(`Correo: ${customer.email}`, 20, 75);
-  pdf.text(`Dirección: ${customer.address}`, 20, 85);
-
-  let y = 105;
-
-  pdf.text('Detalle:', 20, y);
-
-  y += 10;
-
-  cart.forEach((product) => {
-    pdf.text(
-      `${product.name} x${product.quantity} - $${(
-        product.price * product.quantity
-      ).toFixed(2)}`,
-      20,
-      y,
-    );
-
-    y += 10;
-  });
-
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-
-  y += 10;
-
-  pdf.setFontSize(14);
-  pdf.text(`TOTAL: $${total.toFixed(2)}`, 20, y);
-
-  const blob = pdf.output('blob');
+  const html = createInvoiceHTML(customer);
+  const blob = await generatePDFFromHTML(html);
 
   if (pdfBlobUrl) {
     URL.revokeObjectURL(pdfBlobUrl);

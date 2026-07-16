@@ -5,6 +5,9 @@ import {
   removeFromCart,
   increaseQuantity,
   decreaseQuantity,
+  calculateSubtotal,
+  calculateIVA,
+  calculateTotal,
 } from '../../state/store.js';
 
 import { convertCurrency } from '../../api/exchangeAPI.js';
@@ -254,15 +257,13 @@ data-id="${product.id}"
 
 const updateTotals = async () => {
   const cart = getCart();
-
-  const subtotal = cart.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0,
-  );
-
+  const subtotal = calculateSubtotal();
+  const iva = calculateIVA();
   const shipping = Number(document.querySelector('#delivery-zone')?.value || 0);
-  const total = subtotal + shipping;
+  const total = calculateTotal(shipping);
+
   const subtotalElement = document.querySelector('#subtotal');
+  const ivaElement = document.querySelector('#iva');
   const shippingElement = document.querySelector('#shipping');
   const totalElement = document.querySelector('#total');
   const eurElement = document.querySelector('#eur-total');
@@ -276,6 +277,7 @@ const updateTotals = async () => {
   }
 
   subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+  ivaElement.textContent = `$${iva.toFixed(2)}`;
   shippingElement.textContent = `$${shipping.toFixed(2)}`;
   totalElement.textContent = `$${total.toFixed(2)}`;
 

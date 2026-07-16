@@ -1,5 +1,7 @@
 let cart = [];
 
+export const IVA_RATE = 0.15;
+
 export const getCart = () => cart;
 
 export const addToCart = (product) => {
@@ -76,6 +78,18 @@ export const decreaseQuantity = (id) => {
   } else {
     removeFromCart(id);
   }
+};
+
+export const calculateSubtotal = () => {
+  return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+};
+
+export const calculateIVA = () => {
+  return calculateSubtotal() * IVA_RATE;
+};
+
+export const calculateTotal = (shipping = 0) => {
+  return calculateSubtotal() + calculateIVA() + shipping;
 };
 
 export const clearCart = () => {

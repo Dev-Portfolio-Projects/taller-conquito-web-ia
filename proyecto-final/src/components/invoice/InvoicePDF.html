@@ -1,0 +1,107 @@
+<div id="pdf-invoice-template">
+  <div class="invoice">
+    <header class="invoice-header">
+      <div class="brand">
+        <img src="/src/assets/cafeteria.webp" class="logo" />
+
+        <div>
+          <h1>Quito Coffee</h1>
+          <p>Factura electrónica</p>
+        </div>
+      </div>
+
+      <div class="invoice-info">
+        <p>
+          <strong>RUC:</strong>
+          1799999999001
+        </p>
+
+        <p>
+          <strong>Factura Nº:</strong>
+          {{invoiceNumber}}
+        </p>
+
+        <p>
+          <strong>Fecha:</strong>
+          {{date}}
+        </p>
+      </div>
+    </header>
+
+    <section class="customer-section">
+      <h2>Datos del cliente</h2>
+
+      <div class="customer-grid">
+        <p>
+          <strong>Nombre:</strong>
+          {{name}}
+        </p>
+
+        <p>
+          <strong>Cédula/RUC:</strong>
+          {{id}}
+        </p>
+
+        <p>
+          <strong>Teléfono:</strong>
+          {{phone}}
+        </p>
+
+        <p>
+          <strong>Email:</strong>
+          {{email}}
+        </p>
+
+        <p class="full">
+          <strong>Dirección:</strong>
+          {{address}}
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Detalle del pedido</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+
+        <tbody id="invoice-products"></tbody>
+      </table>
+    </section>
+
+    <section class="totals">
+      <p>
+        Subtotal:
+        <strong>{{subtotal}}</strong>
+      </p>
+
+      <p>
+        IVA 15%:
+        <strong>{{iva}}</strong>
+      </p>
+
+      <p>
+        Envío:
+        <strong>{{shipping}}</strong>
+      </p>
+
+      <h3>TOTAL: {{total}}</h3>
+    </section>
+
+    <section class="invoice-footer">
+      <div class="footer-line"></div>
+
+      <h3>Quito Coffee</h3>
+      <p>Gracias por preferirnos ☕</p>
+      <small> Documento generado electrónicamente </small>
+      <small> Este comprobante no representa una factura fiscal real. </small>
+    </section>
+  </div>
+</div>

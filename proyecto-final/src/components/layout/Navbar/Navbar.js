@@ -61,8 +61,7 @@ const getActiveLink = (section) => {
 const Navbar = () => {
   return navbarTemplate
     .replaceAll('{{catalogo}}', getActiveLink('catalogo'))
-    .replaceAll('{{facturacion}}', getActiveLink('facturacion'))
-    .replaceAll('{{contacto}}', getActiveLink('contacto'));
+    .replaceAll('{{facturacion}}', getActiveLink('facturacion'));
 };
 
 export const loadWeather = async () => {
