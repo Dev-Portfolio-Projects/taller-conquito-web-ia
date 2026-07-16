@@ -1,231 +1,221 @@
-# Quito Coffee Roasters - Dashboard Web Interactivo
+# ☕ Quito Coffee Roasters  
 
-## Descripción del proyecto
+<p align="center">
 
-Quito Coffee Roasters es una aplicación frontend construida con Vite que presenta un catálogo interactivo de cafés de especialidad, un carrito lateral de compra, un flujo de facturación y utilidades de contexto como clima local, cita inspiradora y conversión de moneda.
+<img src="https://img.shields.io/badge/Vite-Frontend-646CFF?style=for-the-badge&logo=vite">
+<img src="https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/HTML5-CSS3-E34F26?style=for-the-badge&logo=html5">
+<img src="https://img.shields.io/badge/SPA-Hash_Routing-blue?style=for-the-badge">
+<img src="https://img.shields.io/badge/Responsive-Design-success?style=for-the-badge">
 
-El proyecto funciona como una SPA basada en `window.location.hash`, por lo que la navegación entre inicio, catálogo y facturación se resuelve en el cliente sin un router externo ni un backend propio.
+</p>
 
-## Objetivo del sistema
+## ☕ Descripción
 
-Centralizar la experiencia de descubrimiento y compra de cafés ecuatorianos en una interfaz visualmente cuidada, permitiendo explorar productos, agregarlos al carrito, calcular totales con IVA y envío, y generar una factura PDF en el navegador.
+**Quito Coffee Roasters** es una aplicación web frontend que simula una tienda digital de cafés ecuatorianos de especialidad.
 
-## Problema de negocio solucionado
+El sistema permite explorar productos, administrar un carrito de compra, calcular valores de facturación, consultar información dinámica mediante APIs externas y generar comprobantes PDF directamente desde el navegador.
 
-La aplicación cubre un flujo de venta simple para un negocio de café de especialidad:
+La aplicación está desarrollada como una **SPA (Single Page Application)** utilizando navegación basada en `window.location.hash`, sin backend propio ni router externo.
 
-- exposición de productos con búsqueda y filtro por origen;
-- captura de un pedido sin depender de un servidor;
-- cálculo automático de subtotal, IVA, envío y monedas equivalentes;
-- generación de un comprobante PDF descargable.
+# ✨ Características principales
 
-## Tecnologías utilizadas
+| Módulo | Funcionalidades |
+|---|---|
+| 🏠 Inicio | Hero visual, CTA, clima de Quito y cita inspiradora |
+| ☕ Catálogo | Búsqueda, filtros y tarjetas dinámicas |
+| 🛒 Carrito | Gestión de productos, cantidades y totales |
+| 💱 Conversión | Cambio de moneda mediante API externa |
+| 🧾 Facturación | Formulario, validación y PDF |
+| 📱 Responsive | Adaptación móvil, tablet y escritorio |
 
-- Vite
-- JavaScript ES6+
-- HTML5
-- CSS3
-- Tailwind CSS
-- Lucide Icons
-- html2canvas
-- jsPDF
-- Fetch API
+# 🎯 Objetivo del proyecto
 
-## Características implementadas
+Crear una experiencia de compra frontend completa para una cafetería especializada integrando:
 
-### Presentación
+- Catálogo dinámico de productos.
+- Gestión de pedidos.
+- Consumo de servicios externos.
+- Validación de información.
+- Generación automática de documentos.
+- Diseño adaptable.
 
-- Landing page con hero visual y CTA hacia el catálogo.
-- Cita inspiradora cargada desde API externa y traducida al español.
-- Widget de clima para Quito con carga asíncrona.
-- Footer informativo con contacto, horario y datos de desarrollo.
+# 🛠️ Tecnologías utilizadas
 
-### Catálogo
+## Frontend
 
-- Lista de cafés de especialidad cargada desde datos locales.
-- Búsqueda por nombre.
-- Filtro por origen.
-- Tarjetas con imagen, notas, precio y botón de agregar al carrito.
+| Tecnología | Uso |
+|---|---|
+| ⚡ Vite | Entorno de desarrollo y construcción |
+| 🟨 JavaScript ES6+ | Lógica de aplicación |
+| 🌐 HTML5 | Estructura semántica |
+| 🎨 CSS3 | Diseño visual |
+| 💨 Tailwind CSS | Estilos y utilidades |
 
-### Gestión de productos
+## Librerías
 
-- Datos de productos centralizados en un arreglo local.
-- Estructura preparada para añadir más referencias sin cambiar la lógica principal.
-- Render dinámico de tarjetas a partir de los datos.
+| Librería | Función |
+|---|---|
+| Lucide Icons | Iconografía |
+| html2canvas | Captura de elementos HTML |
+| jsPDF | Creación de documentos PDF |
 
-### Carrito / pedido
+# 🔌 APIs utilizadas
 
-- Carrito lateral desplegable.
-- Aumento, disminución y eliminación de productos.
-- Cálculo automático de subtotal, IVA y total.
-- Selector de zona de envío con valores definidos por la interfaz.
-- Conversión del total a EUR, GBP, JPY, COP y MXN mediante API externa.
+| API | Propósito |
+|---|---|
+| 🌤 Open-Meteo | Información climática de Quito |
+| 💬 DummyJSON Quotes | Citas aleatorias |
+| 🌎 MyMemory Translate | Traducción automática |
+| 💱 ExchangeRate API | Conversión de monedas |
 
-### Formularios
+# 🚀 Funcionalidades
 
-- Formulario de facturación con nombre, cédula/RUC, teléfono, correo y dirección.
-- Validación de campos en cliente antes de generar la factura.
-- Estados visuales de error en campos inválidos.
+## 🏠 Página principal
 
-### APIs
+Incluye:
 
-- Clima en Quito mediante Open-Meteo.
-- Cita aleatoria desde DummyJSON.
-- Traducción de la cita mediante MyMemory.
-- Tasas de cambio mediante ER API.
+- Hero con identidad visual.
+- Botón de acceso al catálogo.
+- Cita inspiradora dinámica.
+- Traducción automática.
+- Widget climático.
+- Información general del negocio.
 
-### Diseño responsive
+# ☕ Catálogo de cafés
 
-- Navegación adaptable a escritorio y móvil.
-- Grid responsivo para tarjetas de catálogo.
-- Drawer lateral para carrito.
-- Modales y formularios adaptados a pantallas medianas y grandes.
+Características:
 
-## Arquitectura del proyecto
+✅ Lista de productos.  
+✅ Búsqueda por nombre.  
+✅ Filtro por origen.  
+✅ Renderizado dinámico.  
+✅ Tarjetas con información del producto.
 
-Estructura real del proyecto:
+# 🛒 Carrito de compra
+
+Incluye:
+
+- Panel lateral desplegable.
+- Agregar productos.
+- Reducir cantidades.
+- Eliminar productos.
+- Cálculo automático.
+- Selección de envío.
+- Conversión de monedas.
+
+# 🧾 Facturación
+
+Funciones:
+
+- Validación formulario.
+- Mensajes de error.
+- Resumen de pedido.
+- Descarga del comprobante PDF.
+
+# 📁 Estructura del proyecto
 
 ```text
 proyecto-final/
+
 ├── index.html
 ├── package.json
-├── pnpm-lock.yaml
-├── pnpm-workspace.yaml
-├── README.md
 ├── vite.config.js
 ├── public/
+│   └── images/
 └── src/
-	├── main.js
-	├── api/
-	│   ├── exchangeAPI.js
-	│   ├── quoteAPI.js
-	│   ├── translateAPI.js
-	│   └── weatherAPI.js
-	├── assets/
-	├── components/
-	│   ├── cart/
-	│   │   ├── Cart.html
-	│   │   └── Cart.js
-	│   ├── catalog/
-	│   │   ├── Catalog.html
-	│   │   └── Catalog.js
-	│   ├── home/
-	│   │   ├── Hero.html
-	│   │   └── Hero.js
-	│   ├── invoice/
-	│   │   ├── Invoice.html
-	│   │   ├── Invoice.js
-	│   │   ├── InvoicePDF.css
-	│   │   └── InvoicePDF.html
-	│   └── layout/
-	│       ├── Footer/
-	│       │   ├── Footer.html
-	│       │   └── Footer.js
-	│       └── Navbar/
-	│           ├── Navbar.html
-	│           └── Navbar.js
-	├── data/
-	│   └── coffees.js
-	├── state/
-	│   └── store.js
-	├── styles/
-	│   ├── animations.css
-	│   ├── main.css
-	│   └── variables.css
-	└── utils/
+    ├── main.js
+    ├── api/
+    │   ├── exchangeAPI.js
+    │   ├── quoteAPI.js
+    │   ├── translateAPI.js
+    │   └── weatherAPI.js
+    ├── components/
+    │   ├── cart/
+    │   ├── catalog/
+    │   ├── home/
+    │   ├── invoice/
+    │   └── layout/
+    ├── data/
+    │   └── coffees.js
+    ├── state/
+    │   └── store.js
+    └── styles/
+        ├── main.css
+        ├── variables.css
+        └── animations.css
 ```
 
-## Implementación técnica
+## Components
 
-### HTML5
+Gestionan la interfaz:
 
-- Se utilizan etiquetas semánticas como `header`, `nav`, `main`, `section`, `article`, `aside`, `form`, `table` y `footer`.
-- El proyecto incluye textos alternativos en imágenes relevantes.
-- Hay uso puntual de accesibilidad mediante `aria-label` en el botón de menú móvil.
-- Los campos de formulario usan `required` para reforzar la validación nativa del navegador.
+- Navbar.
+- Footer.
+- Home.
+- Catálogo.
+- Carrito.
+- Facturación.
 
-Limitación observada: no se aprecia una capa amplia de ARIA ni asociación explícita de etiquetas `label` con cada campo, por lo que la accesibilidad es correcta a nivel básico, pero mejorable.
+## State
 
-### CSS3
+Administra:
 
-- Variables CSS centralizadas en `src/styles/variables.css`.
-- Estilos globales y utilidades personalizadas en `src/styles/main.css`.
-- Uso de Flexbox y Grid para composición visual.
-- Diseño responsive con clases adaptativas por breakpoint.
-- Animaciones sutiles para entrada y flotación en hero.
+- Productos seleccionados.
+- Estado del carrito.
+- Totales.
+- Datos temporales del pedido.
 
-### JavaScript ES6+
+## API Layer
 
-- Uso de `const` y `let`.
-- Funciones flecha en todo el proyecto.
-- Importación y exportación de módulos.
-- Uso de `async/await` para APIs y conversión de moneda.
-- Uso de `fetch` para consumo de servicios externos.
-- Uso de métodos de arreglos como `map`, `filter`, `find` y `reduce`.
-- Manejo del DOM mediante `querySelector`, `classList`, `innerHTML` y eventos.
+Centraliza:
 
-## APIs utilizadas
+- Clima.
+- Traducción.
+- Conversión monetaria.
+- Citas dinámicas.
 
-| API                | Propósito                     | Implementación                                                                                        |
-| ------------------ | ----------------------------- | ----------------------------------------------------------------------------------------------------- |
-| Open-Meteo         | Obtener clima actual de Quito | Se consume en `src/api/weatherAPI.js` para mostrar temperatura, estado y viento en la barra superior. |
-| DummyJSON Quotes   | Obtener una cita aleatoria    | Se consume en `src/api/quoteAPI.js` para cargar una frase en el hero.                                 |
-| MyMemory Translate | Traducir la cita al español   | Se consume en `src/api/translateAPI.js` como paso intermedio de la cita.                              |
-| ER API             | Consultar tasas de cambio     | Se consume en `src/api/exchangeAPI.js` para convertir el total del carrito a varias monedas.          |
+# ⚡ Instalación
 
-## Manejo de errores
+## Requisitos
 
-El proyecto implementa manejo de errores en varias capas:
+- Node.js
+- pnpm
 
-- `try/catch` en las llamadas a APIs externas.
-- Valores de respaldo cuando el clima, la traducción o la cita no están disponibles.
-- Validación previa a la generación del PDF.
-- Mensajes visibles para campos inválidos del formulario.
-- Deshabilitación del botón de generación hasta que el formulario y el carrito sean válidos.
+## Instalar dependencias
 
-Limitación observada: no existe persistencia de pedidos ni recuperación de errores desde un backend, porque toda la lógica se resuelve en el cliente.
+```bash
+pnpm install
+```
 
-## Despliegue
+# ▶️ Ejecutar proyecto
 
-Repositorio:
-[URL]
+Modo desarrollo:
 
-Demo:
-[URL]
+```bash
+pnpm dev
+```
 
-Nota: el proyecto incluye la dependencia `gh-pages`, pero en el `package.json` no se observa un script de publicación configurado. Si se desea automatizar el despliegue, conviene agregar un flujo de build y publicación específico.
+Aplicación disponible en:
 
-## Uso de Inteligencia Artificial
+```text
+http://localhost:5173
+```
 
-Esta sección debe completarse con información real del autor del proyecto. El repositorio no contiene evidencia verificable sobre herramientas de IA, prompts o flujo de asistencia utilizado.
+# 🧪 Manejo de errores
 
-### Herramientas utilizadas
+El sistema implementa:
 
-- [Completar]
+- Manejo `try/catch` en APIs.
+- Valores alternativos cuando servicios fallan.
+- Validación de formularios.
+- Bloqueo de acciones inválidas.
+- Mensajes visuales de error.
 
-### Cómo ayudaron
+# 📱 Diseño Responsive
 
-- [Completar]
-
-### Prompts utilizados
-
-- [Completar]
-
-### Reflexión sobre uso responsable
-
-- [Completar]
-
-## Reflexión final
-
-Quito Coffee Roasters resuelve de forma sólida una experiencia de compra frontend para un negocio de café, combinando catálogo, carrito, validación de datos y generación de factura en una sola interfaz. La decisión de trabajar sin backend mantiene el proyecto ligero y fácil de desplegar, aunque también limita la persistencia de datos y la trazabilidad de pedidos. A nivel técnico, la separación por módulos facilita entender el flujo de navegación y mantiene acotadas las responsabilidades de cada componente. El uso de APIs externas aporta contexto y dinamismo, pero introduce dependencias que deben contemplarse en la experiencia de usuario mediante fallbacks. En conjunto, el proyecto muestra una implementación funcional y coherente con una lógica de compra simple, con margen claro para evolucionar hacia una solución más robusta si en el futuro se integra almacenamiento, autenticación y procesos de pago.
-
-## Mejoras futuras
-
-- Persistir el carrito en `localStorage`.
-- Agregar un backend para registrar pedidos.
-- Incorporar autenticación de usuario.
-- Añadir etiquetas `label` explícitas a los campos del formulario.
-- Mejorar la capa ARIA en el menú móvil y el modal PDF.
-- Crear un flujo de despliegue automatizado para GitHub Pages.
-- Refactorizar utilidades compartidas en `src/utils/`.
-- Centralizar lógica de negocio en `src/services/`.
+| Dispositivo | Adaptación |
+|---|---|
+| 🖥 Desktop | Grid completo y navegación amplia |
+| 💻 Tablet | Componentes flexibles |
+| 📱 Mobile | Menús, formularios y carrito adaptados |
