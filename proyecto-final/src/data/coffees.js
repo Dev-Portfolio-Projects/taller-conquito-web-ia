@@ -5,7 +5,7 @@ export const coffees = [
     origin: 'Ecuador',
     notes: 'Chocolate oscuro, panela y frutos secos',
     price: 14.5,
-    image: 'src/assets/cafeteria-producto.webp',
+    image: 'images/cafeteria-producto.webp',
   },
 
   {
@@ -14,7 +14,7 @@ export const coffees = [
     origin: 'Colombia',
     notes: 'Caramelo, nuez y frutos rojos',
     price: 16.0,
-    image: 'src/assets/cafeteria-producto.webp',
+    image: 'images/cafeteria-producto.webp',
   },
 
   {
@@ -23,7 +23,7 @@ export const coffees = [
     origin: 'Brasil',
     notes: 'Cacao, almendras y dulzor intenso',
     price: 15.5,
-    image: 'src/assets/cafeteria-producto.webp',
+    image: 'images/cafeteria-producto.webp',
   },
 
   {
@@ -32,7 +32,7 @@ export const coffees = [
     origin: 'Etiopía',
     notes: 'Floral, cítrico y miel',
     price: 18.0,
-    image: 'src/assets/cafeteria-producto.webp',
+    image: 'images/cafeteria-producto.webp',
   },
 
   {
@@ -41,7 +41,7 @@ export const coffees = [
     origin: 'Ecuador',
     notes: 'Jazmín, miel y chocolate con leche',
     price: 17.5,
-    image: 'src/assets/cafeteria-producto.webp',
+    image: 'images/cafeteria-producto.webp',
   },
 
   {
@@ -50,7 +50,7 @@ export const coffees = [
     origin: 'Ecuador',
     notes: 'Cacao fino, caramelo y frutas tropicales',
     price: 22.0,
-    image: 'src/assets/cafeteria-producto.webp',
+    image: 'images/cafeteria-producto.webp',
   },
 
   {
@@ -59,7 +59,7 @@ export const coffees = [
     origin: 'Colombia',
     notes: 'Frutos rojos, vainilla y azúcar morena',
     price: 17.2,
-    image: 'src/assets/cafeteria-producto.webp',
+    image: 'images/cafeteria-producto.webp',
   },
 
   {
@@ -68,7 +68,7 @@ export const coffees = [
     origin: 'Colombia',
     notes: 'Chocolate dulce, ciruela y nuez',
     price: 16.8,
-    image: 'src/assets/cafeteria-producto.webp',
+    image: 'images/cafeteria-producto.webp',
   },
 
   {
@@ -77,7 +77,7 @@ export const coffees = [
     origin: 'Brasil',
     notes: 'Avellana, cacao y caramelo suave',
     price: 15.8,
-    image: 'src/assets/cafeteria-producto.webp',
+    image: 'images/cafeteria-producto.webp',
   },
 
   {
@@ -86,7 +86,7 @@ export const coffees = [
     origin: 'Brasil',
     notes: 'Chocolate, frutos secos y dulzor intenso',
     price: 14.9,
-    image: 'src/assets/cafeteria-producto.webp',
+    image: 'images/cafeteria-producto.webp',
   },
 
   {
@@ -95,7 +95,7 @@ export const coffees = [
     origin: 'Brasil',
     notes: 'Miel, almendra y chocolate blanco',
     price: 18.5,
-    image: 'src/assets/cafeteria-producto.webp',
+    image: 'images/cafeteria-producto.webp',
   },
 
   {
@@ -104,7 +104,7 @@ export const coffees = [
     origin: 'Etiopía',
     notes: 'Flores, limón y miel dulce',
     price: 19.5,
-    image: 'src/assets/cafeteria-producto.webp',
+    image: 'images/cafeteria-producto.webp',
   },
 
   {
@@ -113,7 +113,7 @@ export const coffees = [
     origin: 'Etiopía',
     notes: 'Frutos rojos, fermentación dulce y cacao',
     price: 21.0,
-    image: 'src/assets/cafeteria-producto.webp',
+    image: 'images/cafeteria-producto.webp',
   },
 
   {
@@ -122,7 +122,7 @@ export const coffees = [
     origin: 'Etiopía',
     notes: 'Cítricos, té negro y miel floral',
     price: 20.0,
-    image: 'src/assets/cafeteria-producto.webp',
+    image: 'images/cafeteria-producto.webp',
   },
 
   {
@@ -131,7 +131,7 @@ export const coffees = [
     origin: 'Ecuador',
     notes: 'Chocolate amargo, nuez y panela',
     price: 19.0,
-    image: 'src/assets/cafeteria-producto.webp',
+    image: 'images/cafeteria-producto.webp',
   },
 
   {
@@ -140,6 +140,6 @@ export const coffees = [
     origin: 'Colombia',
     notes: 'Caramelo, cacao y frutas maduras',
     price: 17.8,
-    image: 'src/assets/cafeteria-producto.webp',
+    image: 'images/cafeteria-producto.webp',
   },
 ];

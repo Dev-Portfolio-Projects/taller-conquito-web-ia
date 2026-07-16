@@ -4,6 +4,8 @@ import { coffees } from '../../data/coffees.js';
 import { addToCart } from '../../state/store.js';
 import { renderCart, openCart } from '../cart/Cart.js';
 
+const BASE_URL = import.meta.env.BASE_URL;
+
 const Catalog = () => catalogTemplate;
 
 const createCard = (coffee) => {
@@ -27,7 +29,7 @@ const createCard = (coffee) => {
       <div class="overflow-hidden">
 
         <img
-          src="${coffee.image}"
+          src="${BASE_URL}${coffee.image}"
           alt="${coffee.name}"
           class="
           w-full

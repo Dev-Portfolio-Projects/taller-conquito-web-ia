@@ -1,7 +1,11 @@
 import heroTemplate from './Hero.html?raw';
 import { getQuote } from '../../api/quoteAPI.js';
 
-const Hero = () => heroTemplate;
+const Hero = () =>
+  heroTemplate.replace(
+    'src=""',
+    `src="${import.meta.env.BASE_URL}images/cafeteria.webp"`,
+  );
 
 export const loadQuote = async () => {
   const container = document.querySelector('#quote-container');
